@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Flappy++" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Windows">
+				<Option output="bin/Windows/Flappy++" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Windows/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-std=c++14" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-DSFML_STATIC" />
+			<Add directory="lib/Windows/include" />
+		</Compiler>
+		<Linker>
+			<Add library="sfml-graphics-s" />
+			<Add library="sfml-window-s" />
+			<Add library="sfml-system-s" />
+			<Add library="sfml-audio-s" />
+			<Add library="lib/Windows/lib/glew32s.lib" />
+			<Add library="opengl32" />
+			<Add library="winmm" />
+			<Add library="gdi32" />
+			<Add library="freetype" />
+			<Add library="jpeg" />
+			<Add library="openal32" />
+			<Add library="ws2_32" />
+			<Add directory="lib/Windows/lib" />
+		</Linker>
+		<Unit filename="src/core/game.cpp" />
+		<Unit filename="src/core/game.hpp" />
+		<Unit filename="src/core/gameloop.cpp" />
+		<Unit filename="src/core/render.cpp" />
+		<Unit filename="src/core/update.cpp" />
+		<Unit filename="src/main.cpp" />
+		<Unit filename="src/map/map.cpp" />
+		<Unit filename="src/map/map.h" />
+		<Unit filename="src/player/player.cpp" />
+		<Unit filename="src/player/player.hpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
