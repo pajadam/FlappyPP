@@ -17,7 +17,10 @@ also useful:
 
 # What is in project's directories?
 
-./src  - Code
-./data - Assets
-./bin  - Binaries
-./obj  - Build objects
+- /src  - Code
+- /data - Assets
+- /bin  - Binaries
+- /obj  - Build objects
+
+# License
+- [GPL v3.0] (http://www.gnu.org/licenses/gpl-3.0.txt)
