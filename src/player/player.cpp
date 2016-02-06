@@ -1,23 +1,37 @@
+/**
+  ********************************************
+  * Copyright (C) @pajadam
+  ********************************************
+  */
+
 #include "player.hpp"
 
-Player::Player( sf::Texture *tex )
+#define ATLAS_FLAPPY_0 sf::IntRect( 49, 446, 34, 24)
+#define ATLAS_FLAPPY_1 sf::IntRect( 49, 470, 34, 24)
+
+Player::Player( sf::Texture *textureAtlas )
 {
-    flappy.setTexture( *tex );
-    flappy.setTextureRect( sf::IntRect( 49, 426, 34, 24) );
+    flappy.setTexture( *textureAtlas );
+    flappy.setTextureRect( ATLAS_FLAPPY_0 );
 }
 
-void Player::update( bool mouseClick, Map *map )
+void Player::update( bool mouseClick )
 {
     animation_timer++;
 
     if( animation_timer == ANIMATION_TICKS )
     {
-        flappy.setTextureRect( sf::IntRect( 49, 450, 34, 24) );
+        flappy.setTextureRect( ATLAS_FLAPPY_1 );
     }else
     if( animation_timer == ANIMATION_TICKS * 2 )
     {
-        flappy.setTextureRect( sf::IntRect( 49, 426, 34, 24) );
+        flappy.setTextureRect( ATLAS_FLAPPY_0 );
         animation_timer = 0;
+    }
+
+    if( mouseClick )
+    {
+        // handle tap
     }
 }
 
@@ -28,5 +42,5 @@ void Player::reset()
 
 void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-    target.draw( flappy );
+    target.draw( flappy, states );
 }

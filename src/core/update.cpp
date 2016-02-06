@@ -1,9 +1,15 @@
+/**
+  ********************************************
+  * Copyright (C) @pajadam
+  ********************************************
+  */
+
 #include "game.hpp"
 
 void Game::update()
 {
+    player->update( mouseLeftClick );
     level->update( *player );
-    player->update( mouseLeftClick, level );
 }
 
 void Game::events()

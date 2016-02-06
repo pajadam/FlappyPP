@@ -1,3 +1,9 @@
+/**
+  ********************************************
+  * Copyright (C) @pajadam
+  ********************************************
+  */
+
 #ifndef GAME_HPP
 #define GAME_HPP
 
@@ -11,23 +17,23 @@ using namespace std;
 class Game
 {
 public:
-    Game();
-    ~Game();
+    Game(); // Constructor
+    ~Game();// Destructor
 
-    void Run();
+    void Run();// Start game
 
 private:
-    void gameloop();
-    void update();
-    void render();
-    void events();
+    void gameloop();// Main game loop
+    void update();  // Logic update per tick
+    void render();  // Drawing on screen
+    void events();  // Handling events
 
-    sf::RenderWindow window;
-    sf::Clock clock;
+    sf::RenderWindow window; // Game window
+    sf::Clock clock; // Game loop clock
     sf::Time timeSinceLastUpdate;
     sf::Event event;
 
-    sf::Texture atlas;
+    sf::Texture atlas; // Texture atlas
 
     Map *level;
     Player *player;
@@ -36,7 +42,7 @@ private:
     bool isPaused = false;
     bool isFocused = true;
 
-    const sf::Time TimePerFrame = sf::seconds( 1.f / 60.f ); //64TPS
+    const sf::Time TimePerFrame = sf::seconds( 1.f / 60.f ); // 60TPS
 };
 
 #endif // GAME_HPP

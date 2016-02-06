@@ -1,29 +1,52 @@
+/**
+  ********************************************
+  * Copyright (C) @pajadam
+  ********************************************
+  */
+
+#define ATLAS_PIPE   sf::IntRect( 1, 194, 48, 300 )
+#define ATLAS_GROUND sf::IntRect( 1, 0, 48, 194 )
+#define ATLAS_BACKGR sf::IntRect( 0, 14, 1, 480)
+
+#define GROUND_X_0 194
+#define GROUND_X_1 388
+#define GROUND_X_2 582
+#define GROUND_Y 432
+
 #include "map.h"
 
-Map::Map( sf::Texture *tex )
+Map::Map( sf::Texture *textureAtlas )
 {
     for( int i = 0; i < PIPE_AMOUNT; i++ )
     {
-        pipeTop[i].setTexture( *tex );
-        pipeBottom[i].setTexture( *tex );
+        pipeTop[i].setTexture( *textureAtlas );
+        pipeBottom[i].setTexture( *textureAtlas );
 
-        pipeTop[i].setTextureRect( sf::IntRect( 49,474,48,300 ) );
-        pipeBottom[i].setTextureRect( sf::IntRect( 49,474,48,300 ) );
+        pipeTop[i].setTextureRect( ATLAS_PIPE );
+        pipeBottom[i].setTextureRect( ATLAS_PIPE );
 
-        positionPipes( i, i * x_spacing );
+        positionPipe( i, i * x_spacing );
     }
 
-    ground[0].setTexture( *tex );
-    ground[1].setTexture( *tex );
+    ground[0].setTexture( *textureAtlas );
+    ground[1].setTexture( *textureAtlas );
+    ground[2].setTexture( *textureAtlas );
 
-    ground[0].setTextureRect( sf::IntRect( 0, 0, 48, 774 ) );
-    ground[1].setTextureRect( sf::IntRect( 0, 0, 48, 774 ) );
+    ground[0].setTextureRect( ATLAS_GROUND );
+    ground[1].setTextureRect( ATLAS_GROUND );
+    ground[2].setTextureRect( ATLAS_GROUND );
 
     ground[0].rotate( 90 );
     ground[1].rotate( 90 );
+    ground[2].rotate( 90 );
 
-    ground[0].setPosition( 0, 440 );
-    ground[1].setPosition( 768, 440 );
+    ground[0].setPosition( GROUND_X_0, GROUND_Y );
+    ground[1].setPosition( GROUND_X_1, GROUND_Y );
+    ground[2].setPosition( GROUND_X_2, GROUND_Y );
+
+    backgroundSprite.setTexture( *textureAtlas );
+    backgroundSprite.setTextureRect( ATLAS_BACKGR );
+    backgroundSprite.scale(sf::Vector2f( 380, 1.f));
 }
 
 
@@ -39,39 +62,43 @@ void Map::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
     target.draw(ground[0]);
     target.draw(ground[1]);
+    target.draw(ground[2]);
 }
 
-void Map::positionPipes( int pipe )
+void Map::positionPipe( int pipeNumber )
 {
-    if( pipe > PIPE_AMOUNT || pipe < 0 )
+    if( pipeNumber > PIPE_AMOUNT || pipeNumber < 0 )
         return;
 
     int y = rand() % 250 - 260;
 
-    pipeTop[pipe].setPosition(460 + x_spacing, y);
-    pipeBottom[pipe].setPosition(460 + x_spacing, y + 300 + v_spacing);
+    pipeTop[pipeNumber].setPosition(460 + x_spacing, y);
+    pipeBottom[pipeNumber].setPosition(460 + x_spacing, y + 300 + y_spacing);
 }
 
-void Map::positionPipes( int pipe, int spacing )
+void Map::positionPipe( int pipeNumber, int x_offsets )
 {
-    if( pipe > PIPE_AMOUNT || pipe < 0 )
+    if( pipeNumber > PIPE_AMOUNT || pipeNumber < 0 )
         return;
 
     int y = rand() % 250 - 260;
 
-    pipeTop[pipe].setPosition(460 + x_spacing + spacing, y);
-    pipeBottom[pipe].setPosition(460 + x_spacing + spacing, y + 300 + v_spacing);
+    pipeTop[pipeNumber].setPosition(460 + x_spacing + x_offsets, y);
+    pipeBottom[pipeNumber].setPosition(460 + x_spacing + x_offsets, y + 300 + y_spacing);
 }
 
 bool Map::update( Player &player )
 {
     ground[0].move(-speed,0);
     ground[1].move(-speed,0);
+    ground[2].move(-speed,0);
 
-    if(ground[0].getPosition().x < -768)
-        ground[0].setPosition(0,440);
-    else if(ground[1].getPosition().x < 0)
-        ground[1].setPosition(768,440);
+    if( ground[0].getPosition().x < 0 )
+    {
+        ground[0].setPosition( GROUND_X_0 + ground[0].getPosition().x , GROUND_Y);
+        ground[1].setPosition( GROUND_X_1 + ground[0].getPosition().x - 194 , GROUND_Y);
+        ground[2].setPosition( GROUND_X_2 + ground[0].getPosition().x - 194 , GROUND_Y);
+    }
 
     for(int i = 0; i < PIPE_AMOUNT; i++)
     {
@@ -87,12 +114,12 @@ bool Map::update( Player &player )
         if(player.flappy.getGlobalBounds().intersects( pipeTop[i].getGlobalBounds()  ) ||
            player.flappy.getGlobalBounds().intersects( pipeBottom[i].getGlobalBounds() ))
         {
-            //return true;
+            //return true; // Don't check it for now, I'm working on it :D
         }
 
         if(pipeTop[i].getPosition().x < -48)
         {
-            positionPipes(i, -( x_spacing / 2 ));
+            positionPipe(i, -( x_spacing / 2 ));
             collected[i] = false;
         }
     }

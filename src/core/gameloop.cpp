@@ -1,3 +1,9 @@
+/**
+  ********************************************
+  * Copyright (C) @pajadam
+  ********************************************
+  */
+
 #include "game.hpp"
 
 void Game::gameloop()
@@ -9,7 +15,7 @@ void Game::gameloop()
         timeSinceLastUpdate += clock.restart();
         while( timeSinceLastUpdate > TimePerFrame )
         {
-            if( timeSinceLastUpdate >= sf::seconds( 4 ) )
+            if( timeSinceLastUpdate >= sf::seconds( 2 ) )
             {
                 cout << "Game looks overloaded. Holy moly... running so sloow." << endl;
                 timeSinceLastUpdate = sf::seconds( 0 );

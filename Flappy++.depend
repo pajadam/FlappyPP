@@ -515,29 +515,38 @@
 1454619055 source:e:\1.programowanie\flappy++\player.cpp
 	"player.hpp"
 
-1454618610 source:e:\1.programowanie\flappy++\src\core\game.cpp
+1454716764 source:e:\1.programowanie\flappy++\src\core\game.cpp
 	"game.hpp"
 
-1454702666 e:\1.programowanie\flappy++\src\core\game.hpp
+1454716979 e:\1.programowanie\flappy++\src\core\game.hpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	"../map/map.h"
 	"../player/player.hpp"
 
-1454702673 e:\1.programowanie\flappy++\src\map\map.h
+1454717034 e:\1.programowanie\flappy++\src\map\map.h
 	<SFML/Graphics.hpp>
 	"../player/player.hpp"
 
-1454702677 e:\1.programowanie\flappy++\src\player\player.hpp
+1454717304 e:\1.programowanie\flappy++\src\player\player.hpp
 	<SFML/Graphics.hpp>
 	"../map/map.h"
 
-1454609361 source:e:\1.programowanie\flappy++\src\core\gameloop.cpp
+1454716992 source:e:\1.programowanie\flappy++\src\core\gameloop.cpp
 	"game.hpp"
 
-1454616006 source:e:\1.programowanie\flappy++\src\core\render.cpp
+1454706357 source:e:\1.programowanie\flappy++\src\core\render.cpp
 	"game.hpp"
 
-1454615974 source:e:\1.programowanie\flappy++\src\core\update.cpp
+1454717290 source:e:\1.programowanie\flappy++\src\core\update.cpp
 	"game.hpp"
+
+1454715592 source:e:\1.programowanie\flappy++\src\player\player.cpp
+	"player.hpp"
+
+1454706108 source:e:\1.programowanie\flappy++\src\main.cpp
+	"core/game.hpp"
+
+1454715734 source:e:\1.programowanie\flappy++\src\map\map.cpp
+	"map.h"
 
