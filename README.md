@@ -1,8 +1,14 @@
-# What is this?
+# What is Flappy++?
 
 This is Flappy Bird clone written in C++.
 Currently it's being rewritten, cause my old one was litteraly bad.
 New version is written in much better way :)
+
+# Before rewrite...
+
+Check how game works before rewrite. It's running on 40FPS when VSync is forced to OFF :D Yeah, thats one thing why I wanted rewrite it :)
+
+[-> Click to download <-] (http://warsztat.gd/projects/flappypp)
 
 # What am I using to build this?
 
