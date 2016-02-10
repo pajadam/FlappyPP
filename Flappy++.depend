@@ -515,10 +515,10 @@
 1454619055 source:e:\1.programowanie\flappy++\player.cpp
 	"player.hpp"
 
-1454716764 source:e:\1.programowanie\flappy++\src\core\game.cpp
+1455140625 source:e:\1.programowanie\flappy++\src\core\game.cpp
 	"game.hpp"
 
-1454716979 e:\1.programowanie\flappy++\src\core\game.hpp
+1455140826 e:\1.programowanie\flappy++\src\core\game.hpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	"../map/map.h"
@@ -528,7 +528,7 @@
 	<SFML/Graphics.hpp>
 	"../player/player.hpp"
 
-1454717304 e:\1.programowanie\flappy++\src\player\player.hpp
+1455141033 e:\1.programowanie\flappy++\src\player\player.hpp
 	<SFML/Graphics.hpp>
 	"../map/map.h"
 
@@ -538,10 +538,10 @@
 1454706357 source:e:\1.programowanie\flappy++\src\core\render.cpp
 	"game.hpp"
 
-1454717290 source:e:\1.programowanie\flappy++\src\core\update.cpp
+1455140941 source:e:\1.programowanie\flappy++\src\core\update.cpp
 	"game.hpp"
 
-1454715592 source:e:\1.programowanie\flappy++\src\player\player.cpp
+1455141200 source:e:\1.programowanie\flappy++\src\player\player.cpp
 	"player.hpp"
 
 1454706108 source:e:\1.programowanie\flappy++\src\main.cpp
@@ -549,4 +549,10 @@
 
 1454715734 source:e:\1.programowanie\flappy++\src\map\map.cpp
 	"map.h"
+
+1455141032 source:e:\1.programowanie\flappy++\src\player\input.cpp
+	"player.hpp"
+
+1455139892 source:e:\1.programowanie\flappy++\src\player\movement.cpp
+	"player.hpp"
 

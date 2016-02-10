@@ -56,6 +56,8 @@
 		<Unit filename="src/main.cpp" />
 		<Unit filename="src/map/map.cpp" />
 		<Unit filename="src/map/map.h" />
+		<Unit filename="src/player/input.cpp" />
+		<Unit filename="src/player/movement.cpp" />
 		<Unit filename="src/player/player.cpp" />
 		<Unit filename="src/player/player.hpp" />
 		<Extensions>

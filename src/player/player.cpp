@@ -6,16 +6,14 @@
 
 #include "player.hpp"
 
-#define ATLAS_FLAPPY_0 sf::IntRect( 49, 446, 34, 24)
-#define ATLAS_FLAPPY_1 sf::IntRect( 49, 470, 34, 24)
-
 Player::Player( sf::Texture *textureAtlas )
 {
     flappy.setTexture( *textureAtlas );
     flappy.setTextureRect( ATLAS_FLAPPY_0 );
+    flappy.setPosition( MENU_POS_X, MENU_POS_Y );
 }
 
-void Player::update( bool mouseClick )
+void Player::update( bool jumpButtonClick )
 {
     animation_timer++;
 
@@ -29,15 +27,27 @@ void Player::update( bool mouseClick )
         animation_timer = 0;
     }
 
-    if( mouseClick )
+    if( jumpButtonClick )
     {
-        // handle tap
+        tap( false );
     }
+
+    movement();
 }
 
 void Player::reset()
 {
+    flappy.setPosition( MENU_POS_X, MENU_POS_Y );
+    isAlive = false;
+    isReadyUp = true;
+    rotation = 0;
+}
 
+void Player::Spawn()
+{
+    isAlive = true;
+    isReadyUp = false;
+    rotation = 0;
 }
 
 void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const

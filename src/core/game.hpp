@@ -41,6 +41,7 @@ private:
     bool mouseLeftClick = false;
     bool isPaused = false;
     bool isFocused = true;
+    bool isPlaying = false;
 
     const sf::Time TimePerFrame = sf::seconds( 1.f / 60.f ); // 60TPS
 };

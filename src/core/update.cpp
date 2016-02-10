@@ -8,6 +8,22 @@
 
 void Game::update()
 {
+    /*
+     handle Game Menu
+     We need to handle Player::Spawn()
+     and we need create some Main Menu.
+
+     if gameShouldBegin
+     {
+        player->Spawn()
+        map->Reset()
+        set flag to isPlaying = true
+        Wait until player's death or exit button :)
+
+        * We need to keep moving ground without moving pipes... #TODO *
+     }
+     */
+
     player->update( mouseLeftClick );
     level->update( *player );
 }
@@ -24,13 +40,13 @@ void Game::events()
         case sf::Event::LostFocus:
             isFocused = false;
             isPaused = true;
-            window.setFramerateLimit( 15 );
+            //window.setFramerateLimit( 15 ); Save some GPU Time when in background
             break;
         case sf::Event::GainedFocus:
             isFocused = true;
             isPaused  = false;
-            window.setFramerateLimit( 0 );
-            window.setVerticalSyncEnabled( true );
+            //window.setFramerateLimit( ReadSettings );
+            //window.setVerticalSyncEnabled( ReadSettings );
             break;
 
         default:

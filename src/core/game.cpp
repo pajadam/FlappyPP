@@ -11,13 +11,15 @@ window( sf::VideoMode( 380, 480 ),"Flappy++", sf::Style::Close )
 {
     // Inits
     window.setVerticalSyncEnabled( false );
-    //window.setFramerateLimit( 60 );
+    //window.setFramerateLimit( 120 );
     window.setActive( true );
 
     atlas.loadFromFile( "data/atlas.png" );
 
     level = new Map( &atlas );
     player = new Player( &atlas );
+
+    player->reset();
 }
 
 Game::~Game()
