@@ -33,6 +33,7 @@ private:
     sf::Texture atlas; // Texture atlas
     sf::Clock clock; // Game loop clock
     sf::Event event;
+    sf::Image icon;
 
     Map     *level;
     Player  *player;

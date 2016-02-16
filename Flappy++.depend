@@ -518,7 +518,7 @@
 1455583025 source:e:\1.programowanie\flappy++\src\core\game.cpp
 	"game.hpp"
 
-1455581976 e:\1.programowanie\flappy++\src\core\game.hpp
+1455584675 e:\1.programowanie\flappy++\src\core\game.hpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	"../map/map.h"
@@ -541,7 +541,7 @@
 1455583227 source:e:\1.programowanie\flappy++\src\core\update.cpp
 	"game.hpp"
 
-1455582816 source:e:\1.programowanie\flappy++\src\player\player.cpp
+1455583968 source:e:\1.programowanie\flappy++\src\player\player.cpp
 	"player.hpp"
 
 1454706108 source:e:\1.programowanie\flappy++\src\main.cpp
