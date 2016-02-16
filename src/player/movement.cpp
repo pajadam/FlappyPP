@@ -13,10 +13,9 @@ void Player::movement()
 {
     if( flappy.getPosition().x > GAME_POS_X && isAlive )
         flappy.move( -1, 0 );
-    if( isReadyUp ){
+    if( isReadyUp )
         if( flappy.getPosition().y > MIN_Y )
             tap( true );
-    }
 
     velocity += MAP_GRAVITY;
     rotation += ROTATION_AMOUNT;

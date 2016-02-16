@@ -40,13 +40,13 @@ void Game::events()
         case sf::Event::LostFocus:
             isFocused = false;
             isPaused = true;
-            //window.setFramerateLimit( 15 ); Save some GPU Time when in background
+            //window.setFramerateLimit( 15 ); Save some GPU time while in background
             break;
         case sf::Event::GainedFocus:
             isFocused = true;
             isPaused  = false;
-            //window.setFramerateLimit( ReadSettings );
-            //window.setVerticalSyncEnabled( ReadSettings );
+            //window.setFramerateLimit( ReadFromSettings );
+            //window.setVerticalSyncEnabled( ReadFromSettings );
             break;
 
         default:

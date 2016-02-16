@@ -52,17 +52,17 @@ Map::Map( sf::Texture *textureAtlas )
 
 void Map::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-    target.draw(backgroundSprite);
+    target.draw(backgroundSprite, states );
 
     for(int i = 0; i < PIPE_AMOUNT; i++)
     {
-        target.draw(pipeTop[i]);
-        target.draw(pipeBottom[i]);
+        target.draw(pipeBottom[i], states );
+        target.draw(pipeTop[i], states );
     }
 
-    target.draw(ground[0]);
-    target.draw(ground[1]);
-    target.draw(ground[2]);
+    target.draw(ground[0], states );
+    target.draw(ground[1], states );
+    target.draw(ground[2], states );
 }
 
 void Map::positionPipe( int pipeNumber )
@@ -72,8 +72,8 @@ void Map::positionPipe( int pipeNumber )
 
     int y = rand() % 250 - 260;
 
-    pipeTop[pipeNumber].setPosition(460 + x_spacing, y);
     pipeBottom[pipeNumber].setPosition(460 + x_spacing, y + 300 + y_spacing);
+    pipeTop[pipeNumber].setPosition(460 + x_spacing, y);
 }
 
 void Map::positionPipe( int pipeNumber, int x_offsets )
@@ -83,8 +83,8 @@ void Map::positionPipe( int pipeNumber, int x_offsets )
 
     int y = rand() % 250 - 260;
 
-    pipeTop[pipeNumber].setPosition(460 + x_spacing + x_offsets, y);
     pipeBottom[pipeNumber].setPosition(460 + x_spacing + x_offsets, y + 300 + y_spacing);
+    pipeTop[pipeNumber].setPosition(460 + x_spacing + x_offsets, y);
 }
 
 bool Map::update( Player &player )
@@ -105,22 +105,24 @@ bool Map::update( Player &player )
         pipeTop[i].move(-speed,0);
         pipeBottom[i].move(-speed,0);
 
+        if(player.getFlappy().getGlobalBounds().intersects( pipeTop[i].getGlobalBounds()  ) ||
+           player.getFlappy().getGlobalBounds().intersects( pipeBottom[i].getGlobalBounds() ))
+        {
+            //return true; // Don't check it for now, I'm working on it :D // debugging usage :P
+        }
+
         if(pipeTop[i].getPosition().x < 50 && !collected[i])
         {
-            score++;
-            collected[i] = true;
-        }
-
-        if(player.flappy.getGlobalBounds().intersects( pipeTop[i].getGlobalBounds()  ) ||
-           player.flappy.getGlobalBounds().intersects( pipeBottom[i].getGlobalBounds() ))
-        {
-            //return true; // Don't check it for now, I'm working on it :D
-        }
-
-        if(pipeTop[i].getPosition().x < -48)
-        {
-            positionPipe(i, -( x_spacing / 2 ));
-            collected[i] = false;
+            if( !collected[ i ] )
+            {
+                score++;
+                collected[i] = true;
+            }else
+            if(pipeTop[i].getPosition().x < -48)
+            {
+                positionPipe(i, -( x_spacing / 2 ));
+                collected[i] = false;
+            }
         }
     }
 

@@ -17,7 +17,7 @@ void Game::gameloop()
         {
             if( timeSinceLastUpdate >= sf::seconds( 2 ) )
             {
-                cout << "Game looks overloaded. Holy moly... running so sloow." << endl;
+                cout << "Game looks overloaded. Holy moly... running so slooow." << endl;
                 timeSinceLastUpdate = sf::seconds( 0 );
             }
             else

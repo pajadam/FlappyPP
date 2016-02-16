@@ -28,20 +28,19 @@ private:
     void render();  // Drawing on screen
     void events();  // Handling events
 
-    sf::RenderWindow window; // Game window
-    sf::Clock clock; // Game loop clock
     sf::Time timeSinceLastUpdate;
+    sf::RenderWindow window; // Game window
+    sf::Texture atlas; // Texture atlas
+    sf::Clock clock; // Game loop clock
     sf::Event event;
 
-    sf::Texture atlas; // Texture atlas
-
-    Map *level;
-    Player *player;
+    Map     *level;
+    Player  *player;
 
     bool mouseLeftClick = false;
-    bool isPaused = false;
-    bool isFocused = true;
-    bool isPlaying = false;
+    bool isPaused       = false;
+    bool isFocused      = true;
+    bool isPlaying      = false;
 
     const sf::Time TimePerFrame = sf::seconds( 1.f / 60.f ); // 60TPS
 };

@@ -29,7 +29,7 @@ void Player::update( bool jumpButtonClick )
 
     if( jumpButtonClick )
     {
-        tap( false );
+        tap();
     }
 
     movement();
@@ -38,19 +38,24 @@ void Player::update( bool jumpButtonClick )
 void Player::reset()
 {
     flappy.setPosition( MENU_POS_X, MENU_POS_Y );
-    isAlive = false;
     isReadyUp = true;
-    rotation = 0;
+    isAlive   = false;
+    rotation  = 0;
 }
 
 void Player::Spawn()
 {
-    isAlive = true;
     isReadyUp = false;
-    rotation = 0;
+    isAlive   = true;
+    rotation  = 0;
 }
 
 void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     target.draw( flappy, states );
+}
+
+sf::Sprite Player::getFlappy()
+{
+    return flappy;
 }
