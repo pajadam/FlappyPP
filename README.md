@@ -23,13 +23,30 @@ also useful:
 
 # How can I build this one?
 
-You need some things:
-- Compile SFML library to 32bit static one
-   Place it in 'lib/Windows' / 'lib/Linux' (OS dependent)
-- Then you should run 'make -f MAKEFILENAME'
-   There is version for Windows/Linux and Static/Linked one, chose your fate :D
-   Or you can build project using Code::Blocks
-- Finally you can check out Release folder, with game ready to play
+##### First of all you need to get some dependencies:
+- SFML Library in `/lib/Windows/` or `/lib/Windows/`
+- GCC compiler
+- Make
+
+##### You can also get some cool tools that will make this build even better!
+You just need put path to them into global variables of your OS.
+- UPX Packer
+- OptiPNG
+- CBP2MAKE
+
+##### You dont need any of these, but it's useful piece of software :D 
+It'll pack your executable, optimize PNG files and create up-to-date Makefiles when building ( now only on Windows ) :D
+
+NOTE: You can use Code::Blocks project instead of makefiles.
+
+##### Then you should run `make -f MakeFilename`. 
+I've generated some makefiles. You can chose what you need:
+- Windows -> Static/Dynamic SFML
+- Linux   -> Static/Dynamic SFML
+
+##### Built game will apear in `/release` directory.
+
+NOTE: You need to compile SFML by yourself if you want use static linking.
 
 # What is in project's directories?
 
