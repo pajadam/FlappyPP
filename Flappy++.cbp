@@ -3,10 +3,12 @@
 	<FileVersion major="1" minor="6" />
 	<Project>
 		<Option title="Flappy++" />
+		<Option platforms="Windows;Unix;" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
-			<Target title="Windows">
+			<Target title="Windows_Static">
+				<Option platforms="Windows;" />
 				<Option output="bin/Windows/Flappy++" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Windows/" />
 				<Option type="0" />
@@ -23,32 +25,149 @@
 					<Add option="-pedantic" />
 					<Add option="-Wextra" />
 					<Add option="-std=c++14" />
+					<Add option="-DSFML_STATIC" />
+					<Add directory="lib/Windows/include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add library="sfml-graphics-s" />
+					<Add library="sfml-window-s" />
+					<Add library="sfml-system-s" />
+					<Add library="sfml-audio-s" />
+					<Add library="lib/Windows/lib/glew32s.lib" />
+					<Add library="opengl32" />
+					<Add library="winmm" />
+					<Add library="gdi32" />
+					<Add library="freetype" />
+					<Add library="jpeg" />
+					<Add library="openal32" />
+					<Add library="ws2_32" />
+					<Add directory="lib/Windows/lib" />
 				</Linker>
+				<ExtraCommands>
+					<Add after="scripts\release_windows.bat" />
+					<Mode after="always" />
+				</ExtraCommands>
+			</Target>
+			<Target title="Linux_Static">
+				<Option platforms="Unix;" />
+				<Option output="bin/Linux/Flappy++" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Linux/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="1" />
+				<Compiler>
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-O3" />
+					<Add option="-Wredundant-decls" />
+					<Add option="-Wunreachable-code" />
+					<Add option="-Wmissing-declarations" />
+					<Add option="-Wmissing-include-dirs" />
+					<Add option="-Wswitch-default" />
+					<Add option="-Wzero-as-null-pointer-constant" />
+					<Add option="-pedantic" />
+					<Add option="-Wextra" />
+					<Add option="-std=c++14" />
+					<Add option="-DSFML_STATIC" />
+					<Add directory="lib/Linux/include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="sfml-graphics-s" />
+					<Add library="sfml-window-s" />
+					<Add library="sfml-system-s" />
+					<Add library="sfml-audio-s" />
+					<Add library="sndfile" />
+					<Add library="openal" />
+					<Add library="X11" />
+					<Add library="X11-xcb" />
+					<Add library="xcb" />
+					<Add library="xcb-randr" />
+					<Add library="xcb-icccm" />
+					<Add library="xcb-image" />
+					<Add library="udev" />
+					<Add library="pthread" />
+					<Add library="GLEW" />
+					<Add library="freetype" />
+					<Add library="jpeg" />
+					<Add library="GL" />
+					<Add directory="lib/Linux/lib" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="./scripts/release_linux.sh" />
+					<Mode after="always" />
+				</ExtraCommands>
+			</Target>
+			<Target title="Windows_Dynamic">
+				<Option platforms="Windows;" />
+				<Option output="bin/Windows/Flappy++" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Windows/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-O3" />
+					<Add option="-Wredundant-decls" />
+					<Add option="-Wunreachable-code" />
+					<Add option="-Wmissing-declarations" />
+					<Add option="-Wmissing-include-dirs" />
+					<Add option="-Wswitch-default" />
+					<Add option="-Wzero-as-null-pointer-constant" />
+					<Add option="-pedantic" />
+					<Add option="-Wextra" />
+					<Add option="-std=c++14" />
+					<Add directory="lib/Windows/include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="sfml-graphics" />
+					<Add library="sfml-window" />
+					<Add library="sfml-system" />
+					<Add library="sfml-audio" />
+					<Add directory="lib/Windows/lib" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="scripts\release_windows.bat" />
+					<Mode after="always" />
+				</ExtraCommands>
+			</Target>
+			<Target title="Linux_Dynamic">
+				<Option platforms="Unix;" />
+				<Option output="bin/Linux/Flappy++" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Linux/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-O3" />
+					<Add option="-Wredundant-decls" />
+					<Add option="-Wunreachable-code" />
+					<Add option="-Wmissing-declarations" />
+					<Add option="-Wmissing-include-dirs" />
+					<Add option="-Wswitch-default" />
+					<Add option="-Wzero-as-null-pointer-constant" />
+					<Add option="-pedantic" />
+					<Add option="-Wextra" />
+					<Add option="-std=c++14" />
+					<Add directory="lib/Windows/include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="sfml-graphics" />
+					<Add library="sfml-window" />
+					<Add library="sfml-system" />
+					<Add library="sfml-audio" />
+					<Add directory="lib/Windows/lib" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="scripts\release_windows.bat" />
+					<Mode after="always" />
+				</ExtraCommands>
 			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add option="-DSFML_STATIC" />
-			<Add directory="lib/Windows/include" />
 		</Compiler>
-		<Linker>
-			<Add library="sfml-graphics-s" />
-			<Add library="sfml-window-s" />
-			<Add library="sfml-system-s" />
-			<Add library="sfml-audio-s" />
-			<Add library="lib/Windows/lib/glew32s.lib" />
-			<Add library="opengl32" />
-			<Add library="winmm" />
-			<Add library="gdi32" />
-			<Add library="freetype" />
-			<Add library="jpeg" />
-			<Add library="openal32" />
-			<Add library="ws2_32" />
-			<Add directory="lib/Windows/lib" />
-		</Linker>
 		<Unit filename="src/core/game.cpp" />
 		<Unit filename="src/core/game.hpp" />
 		<Unit filename="src/core/gameloop.cpp" />

@@ -21,6 +21,16 @@ also useful:
 - GIMP
 - GVIM
 
+# How can I build this one?
+
+You need some things:
+- Compile SFML library to 32bit static one
+   Place it in 'lib/Windows' / 'lib/Linux' (OS dependent)
+- Then you should run 'make -f MAKEFILENAME'
+   There is version for Windows/Linux and Static/Linked one, chose your fate :D
+   Or you can build project using Code::Blocks
+- Finally you can check out Release folder, with game ready to play
+
 # What is in project's directories?
 
 - /src  - Code

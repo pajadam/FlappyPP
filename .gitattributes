@@ -10,3 +10,5 @@
 *.PDF	 diff=astextplain
 *.rtf	 diff=astextplain
 *.RTF	 diff=astextplain
+*.cpp	 diff=cpp
+*.hpp	 diff=cpp

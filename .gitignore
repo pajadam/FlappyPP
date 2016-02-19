@@ -27,5 +27,6 @@ obj
 bin
 lib
 *.layout
-Flappy++.depend
-*.depend
+*.swp
+release
+*~
