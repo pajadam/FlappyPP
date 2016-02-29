@@ -29,7 +29,7 @@ OBJDIR_WINDOWS_STATIC = obj\\Windows
 DEP_WINDOWS_STATIC = 
 OUT_WINDOWS_STATIC = bin\\Windows\\Flappy++.exe
 
-OBJ_WINDOWS_STATIC = $(OBJDIR_WINDOWS_STATIC)\\src\\core\\game.o $(OBJDIR_WINDOWS_STATIC)\\src\\core\\gameloop.o $(OBJDIR_WINDOWS_STATIC)\\src\\core\\render.o $(OBJDIR_WINDOWS_STATIC)\\src\\core\\update.o $(OBJDIR_WINDOWS_STATIC)\\src\\main.o $(OBJDIR_WINDOWS_STATIC)\\src\\map\\map.o $(OBJDIR_WINDOWS_STATIC)\\src\\player\\input.o $(OBJDIR_WINDOWS_STATIC)\\src\\player\\movement.o $(OBJDIR_WINDOWS_STATIC)\\src\\player\\player.o
+OBJ_WINDOWS_STATIC = $(OBJDIR_WINDOWS_STATIC)\\src\\core\\game.o $(OBJDIR_WINDOWS_STATIC)\\src\\core\\gameloop.o $(OBJDIR_WINDOWS_STATIC)\\src\\core\\render.o $(OBJDIR_WINDOWS_STATIC)\\src\\core\\update.o $(OBJDIR_WINDOWS_STATIC)\\src\\main.o $(OBJDIR_WINDOWS_STATIC)\\src\\map\\map.o $(OBJDIR_WINDOWS_STATIC)\\src\\menu\\menu.o $(OBJDIR_WINDOWS_STATIC)\\src\\player\\input.o $(OBJDIR_WINDOWS_STATIC)\\src\\player\\movement.o $(OBJDIR_WINDOWS_STATIC)\\src\\player\\player.o
 
 all: windows_static
 
@@ -40,6 +40,7 @@ before_windows_static:
 	cmd /c if not exist $(OBJDIR_WINDOWS_STATIC)\\src\\core md $(OBJDIR_WINDOWS_STATIC)\\src\\core
 	cmd /c if not exist $(OBJDIR_WINDOWS_STATIC)\\src md $(OBJDIR_WINDOWS_STATIC)\\src
 	cmd /c if not exist $(OBJDIR_WINDOWS_STATIC)\\src\\map md $(OBJDIR_WINDOWS_STATIC)\\src\\map
+	cmd /c if not exist $(OBJDIR_WINDOWS_STATIC)\\src\\menu md $(OBJDIR_WINDOWS_STATIC)\\src\\menu
 	cmd /c if not exist $(OBJDIR_WINDOWS_STATIC)\\src\\player md $(OBJDIR_WINDOWS_STATIC)\\src\\player
 
 after_windows_static: 
@@ -68,6 +69,9 @@ $(OBJDIR_WINDOWS_STATIC)\\src\\main.o: src\\main.cpp
 $(OBJDIR_WINDOWS_STATIC)\\src\\map\\map.o: src\\map\\map.cpp
 	$(CXX) $(CFLAGS_WINDOWS_STATIC) $(INC_WINDOWS_STATIC) -c src\\map\\map.cpp -o $(OBJDIR_WINDOWS_STATIC)\\src\\map\\map.o
 
+$(OBJDIR_WINDOWS_STATIC)\\src\\menu\\menu.o: src\\menu\\menu.cpp
+	$(CXX) $(CFLAGS_WINDOWS_STATIC) $(INC_WINDOWS_STATIC) -c src\\menu\\menu.cpp -o $(OBJDIR_WINDOWS_STATIC)\\src\\menu\\menu.o
+
 $(OBJDIR_WINDOWS_STATIC)\\src\\player\\input.o: src\\player\\input.cpp
 	$(CXX) $(CFLAGS_WINDOWS_STATIC) $(INC_WINDOWS_STATIC) -c src\\player\\input.cpp -o $(OBJDIR_WINDOWS_STATIC)\\src\\player\\input.o
 
@@ -83,6 +87,7 @@ clean_windows_static:
 	cmd /c rd $(OBJDIR_WINDOWS_STATIC)\\src\\core
 	cmd /c rd $(OBJDIR_WINDOWS_STATIC)\\src
 	cmd /c rd $(OBJDIR_WINDOWS_STATIC)\\src\\map
+	cmd /c rd $(OBJDIR_WINDOWS_STATIC)\\src\\menu
 	cmd /c rd $(OBJDIR_WINDOWS_STATIC)\\src\\player
 
 .PHONY: before_windows_static after_windows_static clean_windows_static

@@ -49,6 +49,13 @@ Map::Map( sf::Texture *textureAtlas )
     backgroundSprite.scale(sf::Vector2f( 380, 1.f));
 }
 
+void Map::reset()
+{
+    for( int i = 0; i < PIPE_AMOUNT; i++ )
+    {
+        positionPipe( i, i * x_spacing );
+    }
+}
 
 void Map::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
@@ -87,18 +94,9 @@ void Map::positionPipe( int pipeNumber, int x_offsets )
     pipeTop[pipeNumber].setPosition(460 + x_spacing + x_offsets, y);
 }
 
-bool Map::update( Player &player )
+void Map::update( Player &player )
 {
-    ground[0].move(-speed,0);
-    ground[1].move(-speed,0);
-    ground[2].move(-speed,0);
-
-    if( ground[0].getPosition().x < 0 )
-    {
-        ground[0].setPosition( GROUND_X_0 + ground[0].getPosition().x , GROUND_Y);
-        ground[1].setPosition( GROUND_X_1 + ground[0].getPosition().x - 194 , GROUND_Y);
-        ground[2].setPosition( GROUND_X_2 + ground[0].getPosition().x - 194 , GROUND_Y);
-    }
+    updateGround();
 
     for(int i = 0; i < PIPE_AMOUNT; i++)
     {
@@ -108,10 +106,11 @@ bool Map::update( Player &player )
         if(player.getFlappy().getGlobalBounds().intersects( pipeTop[i].getGlobalBounds()  ) ||
            player.getFlappy().getGlobalBounds().intersects( pipeBottom[i].getGlobalBounds() ))
         {
-            //return true; // Don't check it for now, I'm working on it :D // debugging usage :P
+            player.hit();
+            return;
         }
 
-        if(pipeTop[i].getPosition().x < 50 && !collected[i])
+        if(pipeTop[i].getPosition().x < 50)
         {
             if( !collected[ i ] )
             {
@@ -126,5 +125,19 @@ bool Map::update( Player &player )
         }
     }
 
-    return false;
+    return;
+}
+
+void Map::updateGround()
+{
+    ground[0].move(-speed,0);
+    ground[1].move(-speed,0);
+    ground[2].move(-speed,0);
+
+    if( ground[0].getPosition().x < 0 )
+    {
+        ground[0].setPosition( GROUND_X_0 + ground[0].getPosition().x , GROUND_Y);
+        ground[1].setPosition( GROUND_X_1 + ground[0].getPosition().x - 194 , GROUND_Y);
+        ground[2].setPosition( GROUND_X_2 + ground[0].getPosition().x - 194 , GROUND_Y);
+    }
 }

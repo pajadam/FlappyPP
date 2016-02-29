@@ -11,6 +11,7 @@
 #include <iostream>
 #include "../map/map.h"
 #include "../player/player.hpp"
+#include "../menu/menu.hpp"
 
 using namespace std;
 
@@ -37,6 +38,7 @@ private:
 
     Map     *level;
     Player  *player;
+    Menu *gameMenu;
 
     bool mouseLeftClick = false;
     bool isPaused       = false;

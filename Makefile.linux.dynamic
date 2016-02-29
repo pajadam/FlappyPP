@@ -29,7 +29,7 @@ OBJDIR_LINUX_DYNAMIC = obj/Linux
 DEP_LINUX_DYNAMIC = 
 OUT_LINUX_DYNAMIC = bin/Linux/Flappy++
 
-OBJ_LINUX_DYNAMIC = $(OBJDIR_LINUX_DYNAMIC)/src/core/game.o $(OBJDIR_LINUX_DYNAMIC)/src/core/gameloop.o $(OBJDIR_LINUX_DYNAMIC)/src/core/render.o $(OBJDIR_LINUX_DYNAMIC)/src/core/update.o $(OBJDIR_LINUX_DYNAMIC)/src/main.o $(OBJDIR_LINUX_DYNAMIC)/src/map/map.o $(OBJDIR_LINUX_DYNAMIC)/src/player/input.o $(OBJDIR_LINUX_DYNAMIC)/src/player/movement.o $(OBJDIR_LINUX_DYNAMIC)/src/player/player.o
+OBJ_LINUX_DYNAMIC = $(OBJDIR_LINUX_DYNAMIC)/src/core/game.o $(OBJDIR_LINUX_DYNAMIC)/src/core/gameloop.o $(OBJDIR_LINUX_DYNAMIC)/src/core/render.o $(OBJDIR_LINUX_DYNAMIC)/src/core/update.o $(OBJDIR_LINUX_DYNAMIC)/src/main.o $(OBJDIR_LINUX_DYNAMIC)/src/map/map.o $(OBJDIR_LINUX_DYNAMIC)/src/menu/menu.o $(OBJDIR_LINUX_DYNAMIC)/src/player/input.o $(OBJDIR_LINUX_DYNAMIC)/src/player/movement.o $(OBJDIR_LINUX_DYNAMIC)/src/player/player.o
 
 all: linux_dynamic
 
@@ -40,6 +40,7 @@ before_linux_dynamic:
 	test -d $(OBJDIR_LINUX_DYNAMIC)/src/core || mkdir -p $(OBJDIR_LINUX_DYNAMIC)/src/core
 	test -d $(OBJDIR_LINUX_DYNAMIC)/src || mkdir -p $(OBJDIR_LINUX_DYNAMIC)/src
 	test -d $(OBJDIR_LINUX_DYNAMIC)/src/map || mkdir -p $(OBJDIR_LINUX_DYNAMIC)/src/map
+	test -d $(OBJDIR_LINUX_DYNAMIC)/src/menu || mkdir -p $(OBJDIR_LINUX_DYNAMIC)/src/menu
 	test -d $(OBJDIR_LINUX_DYNAMIC)/src/player || mkdir -p $(OBJDIR_LINUX_DYNAMIC)/src/player
 
 after_linux_dynamic: 
@@ -68,6 +69,9 @@ $(OBJDIR_LINUX_DYNAMIC)/src/main.o: src/main.cpp
 $(OBJDIR_LINUX_DYNAMIC)/src/map/map.o: src/map/map.cpp
 	$(CXX) $(CFLAGS_LINUX_DYNAMIC) $(INC_LINUX_DYNAMIC) -c src/map/map.cpp -o $(OBJDIR_LINUX_DYNAMIC)/src/map/map.o
 
+$(OBJDIR_LINUX_DYNAMIC)/src/menu/menu.o: src/menu/menu.cpp
+	$(CXX) $(CFLAGS_LINUX_DYNAMIC) $(INC_LINUX_DYNAMIC) -c src/menu/menu.cpp -o $(OBJDIR_LINUX_DYNAMIC)/src/menu/menu.o
+
 $(OBJDIR_LINUX_DYNAMIC)/src/player/input.o: src/player/input.cpp
 	$(CXX) $(CFLAGS_LINUX_DYNAMIC) $(INC_LINUX_DYNAMIC) -c src/player/input.cpp -o $(OBJDIR_LINUX_DYNAMIC)/src/player/input.o
 
@@ -83,6 +87,7 @@ clean_linux_dynamic:
 	rm -rf $(OBJDIR_LINUX_DYNAMIC)/src/core
 	rm -rf $(OBJDIR_LINUX_DYNAMIC)/src
 	rm -rf $(OBJDIR_LINUX_DYNAMIC)/src/map
+	rm -rf $(OBJDIR_LINUX_DYNAMIC)/src/menu
 	rm -rf $(OBJDIR_LINUX_DYNAMIC)/src/player
 
 .PHONY: before_linux_dynamic after_linux_dynamic clean_linux_dynamic

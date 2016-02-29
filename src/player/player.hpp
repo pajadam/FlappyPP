@@ -33,6 +33,7 @@ public:
 
     void Spawn(); // Set flappy as alive with game starting position
     void reset(); // Reset position of player
+    void hit();   // Flappy hits the pipe :C
 private:
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 

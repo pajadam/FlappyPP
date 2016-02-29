@@ -47,12 +47,17 @@ void Player::Spawn()
 {
     isReadyUp = false;
     isAlive   = true;
-    rotation  = 0;
 }
 
 void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     target.draw( flappy, states );
+}
+
+void Player::hit()
+{
+    isAlive = false;
+    isReadyUp = false;
 }
 
 sf::Sprite Player::getFlappy()

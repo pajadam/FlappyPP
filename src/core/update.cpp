@@ -8,24 +8,51 @@
 
 void Game::update()
 {
-    /*
-     handle Game Menu
-     We need to handle Player::Spawn()
-     and we need create some Main Menu.
+    if( isPlaying )
+    {
+        if( isFocused )
+        {
+            player->update( mouseLeftClick );
+            level->update( *player );
+        }else
+        if( isPaused )
+        {
+            switch( gameMenu->updatePause( mouseLeftClick ) )
+            {
+            case ACTION::RESUME:
+                    isPaused = false;
+                break;
 
-     if gameShouldBegin
-     {
-        player->Spawn()
-        map->Reset()
-        set flag to isPlaying = true
-        Wait until player's death or exit button :)
+            case ACTION::TO_MAIN_MENU:
+                    player->reset();
+                    level->reset();
+                    isPlaying = false;
+                break;
 
-        * We need to keep moving ground without moving pipes... #TODO *
-     }
-     */
+            default:
+                break;
+            }
+        }
+    }else
+    {
+        player->update( mouseLeftClick );
+        level->updateGround();
+        switch( gameMenu->updateMain( mouseLeftClick ) )
+        {
+        case ACTION::PLAY:
+                player->Spawn();
+                level->reset();
+                isPlaying = true;
+            break;
 
-    player->update( mouseLeftClick );
-    level->update( *player );
+        case ACTION::EXIT_GAME:
+                window.close();
+            break;
+
+        default:
+            break;
+        }
+    }
 }
 
 void Game::events()

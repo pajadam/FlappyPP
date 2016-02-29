@@ -23,7 +23,7 @@ void Game::gameloop()
             else
                 timeSinceLastUpdate -= TimePerFrame;
 
-            if( !isPaused )
+            if( isFocused )
             {
                 update();
                 mouseLeftClick = false;

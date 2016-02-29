@@ -29,7 +29,7 @@ OBJDIR_LINUX_STATIC = obj/Linux
 DEP_LINUX_STATIC = 
 OUT_LINUX_STATIC = bin/Linux/Flappy++
 
-OBJ_LINUX_STATIC = $(OBJDIR_LINUX_STATIC)/src/core/game.o $(OBJDIR_LINUX_STATIC)/src/core/gameloop.o $(OBJDIR_LINUX_STATIC)/src/core/render.o $(OBJDIR_LINUX_STATIC)/src/core/update.o $(OBJDIR_LINUX_STATIC)/src/main.o $(OBJDIR_LINUX_STATIC)/src/map/map.o $(OBJDIR_LINUX_STATIC)/src/player/input.o $(OBJDIR_LINUX_STATIC)/src/player/movement.o $(OBJDIR_LINUX_STATIC)/src/player/player.o
+OBJ_LINUX_STATIC = $(OBJDIR_LINUX_STATIC)/src/core/game.o $(OBJDIR_LINUX_STATIC)/src/core/gameloop.o $(OBJDIR_LINUX_STATIC)/src/core/render.o $(OBJDIR_LINUX_STATIC)/src/core/update.o $(OBJDIR_LINUX_STATIC)/src/main.o $(OBJDIR_LINUX_STATIC)/src/map/map.o $(OBJDIR_LINUX_STATIC)/src/menu/menu.o $(OBJDIR_LINUX_STATIC)/src/player/input.o $(OBJDIR_LINUX_STATIC)/src/player/movement.o $(OBJDIR_LINUX_STATIC)/src/player/player.o
 
 all: linux_static
 
@@ -40,6 +40,7 @@ before_linux_static:
 	test -d $(OBJDIR_LINUX_STATIC)/src/core || mkdir -p $(OBJDIR_LINUX_STATIC)/src/core
 	test -d $(OBJDIR_LINUX_STATIC)/src || mkdir -p $(OBJDIR_LINUX_STATIC)/src
 	test -d $(OBJDIR_LINUX_STATIC)/src/map || mkdir -p $(OBJDIR_LINUX_STATIC)/src/map
+	test -d $(OBJDIR_LINUX_STATIC)/src/menu || mkdir -p $(OBJDIR_LINUX_STATIC)/src/menu
 	test -d $(OBJDIR_LINUX_STATIC)/src/player || mkdir -p $(OBJDIR_LINUX_STATIC)/src/player
 
 after_linux_static: 
@@ -68,6 +69,9 @@ $(OBJDIR_LINUX_STATIC)/src/main.o: src/main.cpp
 $(OBJDIR_LINUX_STATIC)/src/map/map.o: src/map/map.cpp
 	$(CXX) $(CFLAGS_LINUX_STATIC) $(INC_LINUX_STATIC) -c src/map/map.cpp -o $(OBJDIR_LINUX_STATIC)/src/map/map.o
 
+$(OBJDIR_LINUX_STATIC)/src/menu/menu.o: src/menu/menu.cpp
+	$(CXX) $(CFLAGS_LINUX_STATIC) $(INC_LINUX_STATIC) -c src/menu/menu.cpp -o $(OBJDIR_LINUX_STATIC)/src/menu/menu.o
+
 $(OBJDIR_LINUX_STATIC)/src/player/input.o: src/player/input.cpp
 	$(CXX) $(CFLAGS_LINUX_STATIC) $(INC_LINUX_STATIC) -c src/player/input.cpp -o $(OBJDIR_LINUX_STATIC)/src/player/input.o
 
@@ -83,6 +87,7 @@ clean_linux_static:
 	rm -rf $(OBJDIR_LINUX_STATIC)/src/core
 	rm -rf $(OBJDIR_LINUX_STATIC)/src
 	rm -rf $(OBJDIR_LINUX_STATIC)/src/map
+	rm -rf $(OBJDIR_LINUX_STATIC)/src/menu
 	rm -rf $(OBJDIR_LINUX_STATIC)/src/player
 
 .PHONY: before_linux_static after_linux_static clean_linux_static

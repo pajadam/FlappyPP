@@ -18,10 +18,13 @@ class Map : public sf::Drawable
 {
 public:
     Map( sf::Texture *textureAtlas ); // Constructor
-    bool update( Player &player );    // Logic update per tick
+    void update( Player &player );    // Logic update per tick
 
     void positionPipe( int pipeNumber, int x_offsets );// setting pipe position
     void positionPipe( int pipeNumber );               // Overloaded function,
+
+    void updateGround();
+    void reset();
 
     unsigned int score = 0;
 private:
