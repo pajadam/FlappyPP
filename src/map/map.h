@@ -12,7 +12,7 @@
 #include <string>
 
 #define PIPE_AMOUNT 3
-#define TEXT_HEIGHT 0
+#define TEXT_HEIGHT -10
 
 class Player;
 

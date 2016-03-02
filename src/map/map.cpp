@@ -70,13 +70,17 @@ void Map::reset()
 
 void Map::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-    target.draw(backgroundSprite, states );
+    target.draw( backgroundSprite, states );
     target.draw( points, states );
 
     for(int i = 0; i < PIPE_AMOUNT; i++)
     {
-        target.draw(pipeBottom[i], states );
-        target.draw(pipeTop[i], states );
+        if( pipeTop[i].getPosition().x >= -pipeTop[i].getGlobalBounds().width &&
+            pipeTop[i].getPosition().x <= 380 )
+        {
+            target.draw(pipeBottom[i], states );
+            target.draw(pipeTop[i], states );
+        }
     }
 }
 

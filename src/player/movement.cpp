@@ -25,6 +25,7 @@ void Player::movement()
         //death animation
         if( flappy.getPosition().y >= GROUND_FALLING_Y )
         {
+            flappy.setPosition( flappy.getPosition().x, GROUND_FALLING_Y );
             death_timer--;
             animation_timer = 0;
         }
@@ -39,10 +40,18 @@ void Player::movement()
     if( flappy.getPosition().y < GROUND_FALLING_Y  )
     {
         flappy.move( 0, velocity );
-        flappy.setRotation( rotation );
+
+        if( !isAlive && !isReadyUp ){
+            if( flappy.getRotation() < 90 || flappy.getRotation() > 180 )
+                flappy.rotate( velocity / 3 );
+        }else
+            flappy.setRotation( rotation );
     }else
     {
         hit();
     }
+
+    if( flappy.getPosition().y > GROUND_FALLING_Y )
+        flappy.setPosition( flappy.getPosition().x, GROUND_FALLING_Y );
 
 }

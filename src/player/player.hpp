@@ -20,7 +20,7 @@
 #define MIN_Y 240
 #define V_MAX 9
 #define DEATH_COOLDOWN 45
-#define GROUND_FALLING_Y 400
+#define GROUND_FALLING_Y 405
 #define MAX_HEIGHT -12
 
 class Map;
