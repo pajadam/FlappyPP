@@ -12,25 +12,34 @@ void Game::update()
     {
         if( isFocused )
         {
-            player->update( mouseLeftClick );
-            level->update( *player );
-        }else
-        if( isPaused )
-        {
-            switch( gameMenu->updatePause( mouseLeftClick ) )
+            if( isPaused )
             {
-            case ACTION::RESUME:
-                    isPaused = false;
-                break;
+                switch( gameMenu->updatePause( mouseLeftClick ) )
+                {
+                case ACTION::RESUME:
+                        isPaused = false;
+                    break;
 
-            case ACTION::TO_MAIN_MENU:
+                case ACTION::TO_MAIN_MENU:
+                        player->reset();
+                        level->reset();
+                        isPlaying = false;
+                    break;
+                default:
+                    break;
+                }
+            }else
+            {
+                player->update( mouseLeftClick );
+                if( player->isAlive )
+                    level->update( *player );
+                if( player->isReadyUp )
+                {
                     player->reset();
                     level->reset();
                     isPlaying = false;
-                break;
-
-            default:
-                break;
+                    return;
+                }
             }
         }
     }else

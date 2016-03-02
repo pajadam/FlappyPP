@@ -37,7 +37,7 @@ enum BUTTON
 class Menu : public sf::Drawable
 {
 public:
-    Menu();
+    Menu( sf::Font *font);
     ~Menu();
 
     short updatePause( bool mouseLeftClick ); // Update Pause Menu
@@ -49,6 +49,8 @@ private:
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
     void refresh(); // Refresh Menu Animations
+
+    sf::Font *mFont;
 
     bool drawMain = true;
     bool drawPause = false;

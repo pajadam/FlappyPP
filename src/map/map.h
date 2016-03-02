@@ -27,6 +27,7 @@ public:
     void reset();
 
     unsigned int score = 0;
+    sf::Sprite ground[3];
 private:
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
@@ -37,7 +38,7 @@ private:
     sf::Sprite backgroundSprite;
     sf::Sprite pipeBottom[ PIPE_AMOUNT ];
     sf::Sprite pipeTop[ PIPE_AMOUNT ];
-    sf::Sprite ground[3];
+
     bool collected[ PIPE_AMOUNT ];
 };
 

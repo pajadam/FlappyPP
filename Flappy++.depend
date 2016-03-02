@@ -515,46 +515,46 @@
 1454619055 source:e:\1.programowanie\flappy++\player.cpp
 	"player.hpp"
 
-1456771615 source:e:\1.programowanie\flappy++\src\core\game.cpp
+1456953809 source:e:\1.programowanie\flappy++\src\core\game.cpp
 	"game.hpp"
 
-1456771536 e:\1.programowanie\flappy++\src\core\game.hpp
+1456953010 e:\1.programowanie\flappy++\src\core\game.hpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	"../map/map.h"
 	"../player/player.hpp"
 	"../menu/menu.hpp"
 
-1456774090 e:\1.programowanie\flappy++\src\map\map.h
+1456956552 e:\1.programowanie\flappy++\src\map\map.h
 	<SFML/Graphics.hpp>
 	"../player/player.hpp"
 
-1456769175 e:\1.programowanie\flappy++\src\player\player.hpp
+1456957087 e:\1.programowanie\flappy++\src\player\player.hpp
 	<SFML/Graphics.hpp>
 	"../map/map.h"
 
 1456770292 source:e:\1.programowanie\flappy++\src\core\gameloop.cpp
 	"game.hpp"
 
-1456773638 source:e:\1.programowanie\flappy++\src\core\render.cpp
+1456956640 source:e:\1.programowanie\flappy++\src\core\render.cpp
 	"game.hpp"
 
-1456775854 source:e:\1.programowanie\flappy++\src\core\update.cpp
+1456957343 source:e:\1.programowanie\flappy++\src\core\update.cpp
 	"game.hpp"
 
-1456769437 source:e:\1.programowanie\flappy++\src\player\player.cpp
+1456954012 source:e:\1.programowanie\flappy++\src\player\player.cpp
 	"player.hpp"
 
 1454706108 source:e:\1.programowanie\flappy++\src\main.cpp
 	"core/game.hpp"
 
-1456775600 source:e:\1.programowanie\flappy++\src\map\map.cpp
+1456956571 source:e:\1.programowanie\flappy++\src\map\map.cpp
 	"map.h"
 
-1455583623 source:e:\1.programowanie\flappy++\src\player\input.cpp
+1456955626 source:e:\1.programowanie\flappy++\src\player\input.cpp
 	"player.hpp"
 
-1456769637 source:e:\1.programowanie\flappy++\src\player\movement.cpp
+1456957384 source:e:\1.programowanie\flappy++\src\player\movement.cpp
 	"player.hpp"
 
 1455824050 source:/home/pajda/FlappyWorking/FlappyPP/src/core/game.cpp
@@ -1395,9 +1395,11 @@
 1455824050 source:/home/pajda/Desktop/FlappyPP/src/player/player.cpp
 	"player.hpp"
 
-1456773931 e:\1.programowanie\flappy++\src\menu\menu.hpp
+1456953034 e:\1.programowanie\flappy++\src\menu\menu.hpp
 	<SFML/Graphics.hpp>
 
-1456773900 source:e:\1.programowanie\flappy++\src\menu\menu.cpp
+1456953766 source:e:\1.programowanie\flappy++\src\menu\menu.cpp
 	"menu.hpp"
+
+1456953072 e:\1.programowanie\flappy++\version.h
 

@@ -35,6 +35,7 @@ private:
     sf::Clock clock; // Game loop clock
     sf::Event event;
     sf::Image icon;
+    sf::Font font;
 
     Map     *level;
     Player  *player;

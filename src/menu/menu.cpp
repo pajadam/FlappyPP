@@ -6,9 +6,9 @@
 
 #include "menu.hpp"
 
-Menu::Menu()
+Menu::Menu( sf::Font *font )
 {
-
+    mFont = font;
 }
 
 Menu::~Menu()
@@ -18,6 +18,8 @@ Menu::~Menu()
 
 short Menu::updateMain( bool mouseLeftClick )
 {
+    if( mouseLeftClick )
+        return 1;
     return 0;
 }
 

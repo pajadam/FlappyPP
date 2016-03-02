@@ -19,6 +19,9 @@
 #define GAME_POS_X 80
 #define MIN_Y 240
 #define V_MAX 9
+#define DEATH_COOLDOWN 45
+#define GROUND_FALLING_Y 400
+#define MAX_HEIGHT -12
 
 class Map;
 
@@ -34,15 +37,17 @@ public:
     void Spawn(); // Set flappy as alive with game starting position
     void reset(); // Reset position of player
     void hit();   // Flappy hits the pipe :C
+
+    bool isReadyUp      = true; // Is ready to start game?
+    bool isAlive        = false;// Is alive?
 private:
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
     void tap( bool force = false ); // if force then ignore player state ( used for main menu AI simulation )
     void movement(); // calculate movement
 
-    int animation_timer = 0;    // So simple... we don't need advanced animation handling :P
-    bool isReadyUp      = true; // Is ready to start game?
-    bool isAlive        = false;// Is alive?
+    unsigned int animation_timer = 0;    // So simple... we don't need advanced animation handling :P
+    unsigned int death_timer = DEATH_COOLDOWN; // Simple death animation delay / ticks
     float rotation      = 0;    // Player Rotation
     float velocity      = 0;    // Player Y velocity
 

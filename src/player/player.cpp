@@ -29,7 +29,13 @@ void Player::update( bool jumpButtonClick )
 
     if( jumpButtonClick )
     {
-        tap();
+        if( !isAlive && !isReadyUp && flappy.getPosition().y >= GROUND_FALLING_Y )
+        {
+            isReadyUp = true;
+            return;
+        }
+        else
+            tap();
     }
 
     movement();
@@ -47,6 +53,7 @@ void Player::Spawn()
 {
     isReadyUp = false;
     isAlive   = true;
+    tap( true );
 }
 
 void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const

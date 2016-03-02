@@ -66,10 +66,6 @@ void Map::draw(sf::RenderTarget& target, sf::RenderStates states) const
         target.draw(pipeBottom[i], states );
         target.draw(pipeTop[i], states );
     }
-
-    target.draw(ground[0], states );
-    target.draw(ground[1], states );
-    target.draw(ground[2], states );
 }
 
 void Map::positionPipe( int pipeNumber )

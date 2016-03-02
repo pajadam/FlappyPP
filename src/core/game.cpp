@@ -5,21 +5,21 @@
   */
 
 #include "game.hpp"
-#include "../../version.h"
 
 Game::Game():
 window( sf::VideoMode( 380, 480 ), "Flappy++", sf::Style::Close )
 {
     icon.loadFromFile( "data/icon.png" );
-    window.setVerticalSyncEnabled( true );
+    window.setVerticalSyncEnabled( false );
     window.setIcon( icon.getSize().x, icon.getSize().y, icon.getPixelsPtr() );
     window.setActive( true );
 
     atlas.loadFromFile( "data/atlas.png" );
+    font.loadFromFile( "data/f1.ttf" );
 
     level  =   new Map( &atlas );
     player =   new Player( &atlas );
-    gameMenu = new Menu( /*font*/ );
+    gameMenu = new Menu( &font );
 
     player->reset();
 }
