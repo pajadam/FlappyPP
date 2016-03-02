@@ -15,7 +15,7 @@
 
 #include "map.h"
 
-Map::Map( sf::Texture *textureAtlas )
+Map::Map( sf::Texture *textureAtlas, sf::Font *font )
 {
     for( int i = 0; i < PIPE_AMOUNT; i++ )
     {
@@ -47,6 +47,12 @@ Map::Map( sf::Texture *textureAtlas )
     backgroundSprite.setTexture( *textureAtlas );
     backgroundSprite.setTextureRect( ATLAS_BACKGR );
     backgroundSprite.scale(sf::Vector2f( 380, 1.f));
+
+    points.setCharacterSize( 64 );
+    points.setFont( *font );
+    points.setString( "0" );
+    points.setPosition( 190 - ( points.getGlobalBounds().width / 2 ), TEXT_HEIGHT );
+
 }
 
 void Map::reset()
@@ -54,12 +60,18 @@ void Map::reset()
     for( int i = 0; i < PIPE_AMOUNT; i++ )
     {
         positionPipe( i, i * x_spacing );
+        collected[i] = false;
     }
+
+    score = 0;
+    points.setString( "0" );
+    points.setPosition( 190 - ( points.getGlobalBounds().width / 2 ), TEXT_HEIGHT );
 }
 
 void Map::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     target.draw(backgroundSprite, states );
+    target.draw( points, states );
 
     for(int i = 0; i < PIPE_AMOUNT; i++)
     {
@@ -106,11 +118,13 @@ void Map::update( Player &player )
             return;
         }
 
-        if(pipeTop[i].getPosition().x < 50)
+        if(pipeTop[i].getPosition().x < 80)
         {
             if( !collected[ i ] )
             {
                 score++;
+                points.setString( std::to_string( score ) );
+                points.setPosition( 190 - ( points.getGlobalBounds().width / 2 ), TEXT_HEIGHT );
                 collected[i] = true;
             }else
             if(pipeTop[i].getPosition().x < -48)

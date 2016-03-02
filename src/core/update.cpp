@@ -35,6 +35,7 @@ void Game::update()
                     level->update( *player );
                 if( player->isReadyUp )
                 {
+                    // get scores from level->score
                     player->reset();
                     level->reset();
                     isPlaying = false;

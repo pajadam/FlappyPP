@@ -17,7 +17,7 @@ window( sf::VideoMode( 380, 480 ), "Flappy++", sf::Style::Close )
     atlas.loadFromFile( "data/atlas.png" );
     font.loadFromFile( "data/f1.ttf" );
 
-    level  =   new Map( &atlas );
+    level  =   new Map( &atlas, &font );
     player =   new Player( &atlas );
     gameMenu = new Menu( &font );
 

@@ -515,7 +515,7 @@
 1454619055 source:e:\1.programowanie\flappy++\player.cpp
 	"player.hpp"
 
-1456953809 source:e:\1.programowanie\flappy++\src\core\game.cpp
+1456959411 source:e:\1.programowanie\flappy++\src\core\game.cpp
 	"game.hpp"
 
 1456953010 e:\1.programowanie\flappy++\src\core\game.hpp
@@ -525,9 +525,10 @@
 	"../player/player.hpp"
 	"../menu/menu.hpp"
 
-1456956552 e:\1.programowanie\flappy++\src\map\map.h
+1456959849 e:\1.programowanie\flappy++\src\map\map.h
 	<SFML/Graphics.hpp>
 	"../player/player.hpp"
+	<string>
 
 1456957087 e:\1.programowanie\flappy++\src\player\player.hpp
 	<SFML/Graphics.hpp>
@@ -542,7 +543,7 @@
 1456957343 source:e:\1.programowanie\flappy++\src\core\update.cpp
 	"game.hpp"
 
-1456954012 source:e:\1.programowanie\flappy++\src\player\player.cpp
+1456957627 source:e:\1.programowanie\flappy++\src\player\player.cpp
 	"player.hpp"
 
 1454706108 source:e:\1.programowanie\flappy++\src\main.cpp

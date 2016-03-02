@@ -9,15 +9,17 @@
 
 #include <SFML/Graphics.hpp>
 #include "../player/player.hpp"
+#include <string>
 
 #define PIPE_AMOUNT 3
+#define TEXT_HEIGHT 0
 
 class Player;
 
 class Map : public sf::Drawable
 {
 public:
-    Map( sf::Texture *textureAtlas ); // Constructor
+    Map( sf::Texture *textureAtlas, sf::Font *font ); // Constructor
     void update( Player &player );    // Logic update per tick
 
     void positionPipe( int pipeNumber, int x_offsets );// setting pipe position
@@ -27,6 +29,7 @@ public:
     void reset();
 
     unsigned int score = 0;
+
     sf::Sprite ground[3];
 private:
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
@@ -38,6 +41,8 @@ private:
     sf::Sprite backgroundSprite;
     sf::Sprite pipeBottom[ PIPE_AMOUNT ];
     sf::Sprite pipeTop[ PIPE_AMOUNT ];
+
+    sf::Text points;
 
     bool collected[ PIPE_AMOUNT ];
 };
