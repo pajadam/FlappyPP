@@ -91,11 +91,10 @@ void Game::events()
                 mouseLeftClick = true;
             else
             if( event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Escape )
-            {
-                if( isPaused == true )
-                    isPaused = false;
-                else isPaused = true;
-            }
+                isPaused = !isPaused;
+            else
+            if( event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Space )
+                mouseLeftClick = true;
             break;
         }
     }

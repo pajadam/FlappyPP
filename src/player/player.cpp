@@ -65,6 +65,7 @@ void Player::hit()
 {
     isAlive = false;
     isReadyUp = false;
+    velocity = 0;
 }
 
 sf::Sprite Player::getFlappy()
