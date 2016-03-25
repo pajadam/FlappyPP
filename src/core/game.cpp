@@ -12,7 +12,6 @@ window( sf::VideoMode( 380, 480 ), "Flappy++", sf::Style::Close )
     icon.loadFromFile( "data/icon.png" );
     window.setVerticalSyncEnabled( false );
     window.setIcon( icon.getSize().x, icon.getSize().y, icon.getPixelsPtr() );
-    window.setActive( true );
 
     atlas.loadFromFile( "data/atlas.png" );
     font.loadFromFile( "data/f1.ttf" );
@@ -22,6 +21,8 @@ window( sf::VideoMode( 380, 480 ), "Flappy++", sf::Style::Close )
     gameMenu = new Menu( &font );
 
     player->reset();
+
+    window.setActive( true );
 }
 
 Game::~Game()

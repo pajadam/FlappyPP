@@ -182,6 +182,11 @@
 		<Unit filename="src/player/movement.cpp" />
 		<Unit filename="src/player/player.cpp" />
 		<Unit filename="src/player/player.hpp" />
+		<Unit filename="src/res/icon.rc">
+			<Option compilerVar="WINDRES" />
+			<Option target="Windows_Static" />
+			<Option target="Windows_Dynamic" />
+		</Unit>
 		<Unit filename="version.h" />
 		<Extensions>
 			<code_completion />
