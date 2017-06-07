@@ -87,7 +87,7 @@ void Game::events()
             break;
 
         default:
-            if( event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left )
+            if( event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left )
                 mouseLeftClick = true;
             else
             if( event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Escape )
