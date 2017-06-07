@@ -115,8 +115,15 @@ void Map::update( Player &player )
         pipeTop[i].move(-speed,0);
         pipeBottom[i].move(-speed,0);
 
-        if(player.getFlappy().getGlobalBounds().intersects( pipeTop[i].getGlobalBounds()  ) ||
-           player.getFlappy().getGlobalBounds().intersects( pipeBottom[i].getGlobalBounds() ))
+        sf::FloatRect playerRect = player.getFlappy().getGlobalBounds();
+        // Make collision rectangle smaller than sprite is.
+        playerRect.left += 5;
+        playerRect.width -= 10;
+        playerRect.top += 3;
+        playerRect.height -= 6;
+
+        if(playerRect.intersects( pipeTop[i].getGlobalBounds()  ) ||
+           playerRect.intersects( pipeBottom[i].getGlobalBounds() ))
         {
             player.hit();
             return;
