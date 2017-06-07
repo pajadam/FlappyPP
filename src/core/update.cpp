@@ -90,10 +90,10 @@ void Game::events()
             if( event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left )
                 mouseLeftClick = true;
             else
-            if( event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Escape )
+            if( event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape )
                 isPaused = !isPaused;
             else
-            if( event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Space )
+            if( event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space )
                 mouseLeftClick = true;
             break;
         }
